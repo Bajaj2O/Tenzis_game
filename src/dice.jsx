@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Dice(props) {
     const styles =
-                { backgroundColor: props.isHeld ? "green" : "auto" };
+                { backgroundColor: props.isHeld ? "green" : "black" };
 
 
     return (
