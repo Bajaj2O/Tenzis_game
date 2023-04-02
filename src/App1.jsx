@@ -2,6 +2,9 @@ import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react'
 import './App.css'
 import Dice from './dice'
+import Confetti from 'react-confetti'
+import logo from "./assets/cube.png"
+
 
 
 function App1() {
@@ -50,7 +53,7 @@ function App1() {
 
     useEffect(() => {
         if (tenzi) {
-            setButtonText("Reset");
+            setButtonText("New Game");
         }
     }, [tenzi])
 
@@ -70,46 +73,57 @@ function App1() {
             })
             setTenzi(false);
             setButtonText("Roll")
-        }else {
+        } else {
 
-                setAllDice(prev => {
-                    let newArr = prev.map(i => {
+            setAllDice(prev => {
+                let newArr = prev.map(i => {
 
-                        return (
-                            i.isHeld ? i :
-                                { ...i, val: Math.floor(Math.random() * 6) + 1 }
-                        )
+                    return (
+                        i.isHeld ? i :
+                            { ...i, val: Math.floor(Math.random() * 6) + 1 }
+                    )
 
-                    })
-                    return newArr;
                 })
-            }
+                return newArr;
+            })
         }
+    }
 
+    function doesWon() {
         return (
-            <div>
-                <img className='logo' src="./assets/tenzi--logo.png" alt="tenzi--logo" height="300px" />
-                <h1>Tenzi</h1>
-                <p>
-                    <div>
-                        Keep rolling until all ten of your dice show the same number.
-                    </div>
+            <>
+                <h3>Hurray ! you won</h3>
+                <Confetti />
+            </>
 
-                    <div>Put all your dice with that number aside, collect the remaining dice and quickly roll again</div>
-                </p>
-                <div className='dieFaces'>
-                    {dieFaces}
-                </div>
-                <div>
-                    <button className='roll' onClick={rollAll} >
-                        {buttonText}
-                    </button>
-                </div>
-                {tenzi && <h2>
-                    Hurray!! you won that.
-                </h2>}
-            </div>
         )
     }
 
-    export default App1
+    return (
+        <div className='main'>
+            <div className='header'>
+                <img src={logo} alt="logo--tenzi" className='logo'/>
+                <h1>Tenzi</h1>
+            </div>
+            <p>
+                <div>
+                    Keep rolling until all ten of your dice show the same number.
+                </div>
+
+                <div>Put all your dice with that number aside, collect the remaining dice and quickly roll again</div>
+            </p>
+            <div className='dieFaces'>
+                {dieFaces}
+            </div>
+            <div>
+                <button className='roll' onClick={rollAll} >
+                    {buttonText}
+                </button>
+            </div>
+            {tenzi && doesWon()}
+
+        </div>
+    )
+}
+
+export default App1

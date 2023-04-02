@@ -12,26 +12,23 @@
   transition: filter 300ms;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
 
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
-
+  
   to {
     transform: rotate(360deg);
   }
 }
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+  
+}
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
+   .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
@@ -43,18 +40,25 @@
 .roll {
   background-color: #4a2ea5;
   margin-top: 20px;
-  width: 6em;
+  width: 8em;
 }
 .roll:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
 .dieFaces {
-  background-color: rgb(100, 87, 100);
+  /* background-color: rgb(100, 87, 100); */
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);
 }
-
-.read-the-docs {
-  color: #888;
+.header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
+.main{
+  padding: 4em;
+  background: #504e56;
+}
+
